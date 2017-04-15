@@ -1,0 +1,27 @@
+{
+  "name": "jb223pu-examination-3",
+  "version": "1.0.0",
+  "description": "A application to fetch issues from a github repo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1dv023/jb223pu-examination-3.git"
+  },
+  "author": "jimmybengtsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1dv023/jb223pu-examination-3/issues"
+  },
+  "homepage": "https://github.com/1dv023/jb223pu-examination-3#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.4"
+  }
+}
