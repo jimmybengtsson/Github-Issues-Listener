@@ -1,0 +1,1 @@
+document.body.background = "img/Background.jpg";
