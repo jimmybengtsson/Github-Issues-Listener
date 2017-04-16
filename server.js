@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public'));
 
 // Start the application.
 
-app.listen(port, () => {
+let server = app.listen(port, () => {
     console.log('Express started on ' + port);
     console.log('Terminate with ctrl-c');
 });
