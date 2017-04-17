@@ -38,17 +38,20 @@ let io = require("socket.io")(server);
 
 io.on('connection', function(socket) {
 
-    FetchGithub(socket);
     console.log('io');
 
+    socket.emit('issueshooks', function () {
+
+        app.post('/', githubMiddleware, function(req, res) {
+
+            let payload = req.body;
+            console.log(payload);
+            res.status(202).send();
+
+            return payload.action + payload.issue;
+
+        });
+    });
+
 });
 
-app.post('/', githubMiddleware, function(req, res) {
-    // Only respond to github push events
-    res.status(200).end();
-
-    let payload = req.body;
-    let repo    = payload.repository.full_name;
-
-    console.log(payload);
-});
