@@ -38,19 +38,16 @@ let io = require("socket.io")(server);
 
 io.on('connection', function(socket) {
 
+    FetchGithub(socket);
     console.log('io');
 
-    socket.emit('issueshooks', function () {
+    app.post('/', githubMiddleware, function(req, res) {
 
-        app.post('/', githubMiddleware, function(req, res) {
+        let payload = req.body;
+        console.log(payload);
 
-            let payload = req.body;
-            console.log(payload);
-            res.status(202).send();
-
-            return payload.action + payload.issue;
-
-        });
+        socket.emit(payload.action, payload.issue);
+        return res.status(202).send();
     });
 
 });
