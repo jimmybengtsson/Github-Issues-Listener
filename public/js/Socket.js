@@ -16,7 +16,7 @@ socket.on('getAllIssues', function(issues) {
     });
 });
 
-socket.on('opened', function(data) {
+socket.on('newissue', function(data) {
     console.log(data);
 });
 

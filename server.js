@@ -7,6 +7,8 @@ let fs = require('fs');
 let FetchGithub = require('./server/FetchGithub.js');
 require('dotenv').config();
 
+let payload;
+
 let githubMiddleware = require('github-webhook-middleware')({
     secret: process.env.GITHUB_SECRET,
 });
@@ -36,19 +38,19 @@ let server = https.createServer({
 
 let io = require("socket.io")(server);
 
+app.post('/', githubMiddleware, function(req, res) {
+
+    payload = req.body;
+    console.log(payload);
+    return res.status(202).send();
+});
+
 io.on('connection', function(socket) {
+
+    socket.emit('newissue', payload);
 
     FetchGithub(socket);
     console.log('io');
-
-    app.post('/', githubMiddleware, function(req, res) {
-
-        let payload = req.body;
-        console.log(payload);
-
-        socket.emit('issues', payload.issue);
-        return res.status(202).send();
-    });
 
 });
 
