@@ -10,6 +10,8 @@ let fs = require('fs');
 let app = express();
 let port = process.env.PORT || 8000;
 
+app.use(express.static(__dirname + '/public'));
+
 // Start the application.
 
 https.createServer({
