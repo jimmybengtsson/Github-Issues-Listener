@@ -3,7 +3,7 @@ let socket = io.connect();
 let ulList = document.querySelector('.ulClass');
 let liList = document.createElement('li');
 
-socket.on('FetchGithub', function(issues) {
+socket.on('getAllIssues', function(issues) {
 
     /*for (let i in issues) {
         ulList.appendChild(createNewIssueDiv(issues[i]));
