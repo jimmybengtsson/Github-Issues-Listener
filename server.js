@@ -31,13 +31,9 @@ let server = https.createServer({
 
 let io = require("socket.io")(server);
 
-io.on('connection', function (socket) {
+io.on('connection', function(socket) {
 
     FetchGithub(socket);
     console.log('io');
 
-});
-
-app.get('/', function(req, res) {
-    res.render('public/index.html');
 });
