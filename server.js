@@ -45,7 +45,7 @@ io.on('connection', function(socket) {
 
 webhookHandler.on('*', function (event, repo, data) {
 
-    console.log(event + data + repo);
+    console.log(event + bodyParser.json(data) + repo);
 
 });
 
