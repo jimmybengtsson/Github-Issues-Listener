@@ -2,7 +2,7 @@
 
 let express = require('express');
 let https = require('https');
-let http = require('http');
+let bodyParser = require('body-parser');
 let fs = require('fs');
 let FetchGithub = require('./server/FetchGithub.js');
 require('dotenv').config();
@@ -13,6 +13,10 @@ let app = express();
 let port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Start the application.
 
@@ -27,9 +31,13 @@ let server = https.createServer({
 
 let io = require("socket.io")(server);
 
-io.on('connection', function () {
+io.on('connection', function (socket) {
 
-    FetchGithub();
+    FetchGithub(socket);
     console.log('io');
 
+});
+
+app.get('/', function(req, res) {
+    res.render('public/index.html');
 });

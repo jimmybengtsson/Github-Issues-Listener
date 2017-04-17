@@ -1,8 +1,5 @@
 'use strict';
 
-// let ulList = document.querySelector('.ulClass');
-// let socket = io();
-
 // Select the li elements for icons.
 
 let memoryIcon = document.querySelector('#memory');
