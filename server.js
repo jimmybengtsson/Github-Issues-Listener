@@ -19,6 +19,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(webhookHandler);
 
 // Start the application.
@@ -43,7 +45,7 @@ io.on('connection', function(socket) {
 
 webhookHandler.on('issues', function (repo, data) {
 
-    console.log(data + repo);
+    console.log(JSON.parse(data) + repo);
 
 });
 
