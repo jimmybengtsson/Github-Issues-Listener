@@ -8,7 +8,6 @@ function FetchGithub(socket) {
 
     request(config, function (error, response, body) {
         if (!error) {
-            console.log(JSON.parse(body));
             socket.emit('getAllIssues', JSON.parse(body));
         }
     });
