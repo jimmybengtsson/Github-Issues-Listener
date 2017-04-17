@@ -86,10 +86,3 @@ function NewWindow(divCopy, imgUrl, appTitle) {
     return classClone;
 
 }
-
-
-
-
-module.exports = NewWindow;
-
-

@@ -143,5 +143,3 @@ function Memory(rows, cols, imgUrl) {
 
     NewWindow(MemoryDiv(rows, cols), imgUrl, appTitle);
 }
-
-module.exports = Memory;
