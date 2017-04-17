@@ -45,11 +45,11 @@ io.on('connection', function(socket) {
 
 webhookHandler.on('*', function (repo, data) {
 
-    console.log(data.issue.title);
+    console.log(data);
 
 });
 
 webhookHandler.on('error', function (err, req, res) {
 
-    console.log(err);
+    console.log(err + 'test');
 });
