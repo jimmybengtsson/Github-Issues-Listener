@@ -3,12 +3,14 @@ let socket = io();
 let ulList = document.querySelector('.ulClass');
 let liList = document.createElement('li');
 
-socket.on('getAllIssues', function(issues) {
+socket.on('connection', function(issues) {
 
-    for (let i in issues) {
+    /*for (let i in issues) {
         ulList.appendChild(createNewIssueDiv(issues[i]));
         console.log(ulList);
-    }
+
+    }*/
+    console.log(issues);
 });
 
 function createNewIssueDiv(issue) {
