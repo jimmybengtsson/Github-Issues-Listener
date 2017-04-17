@@ -3,7 +3,7 @@ let socket = io();
 let ulList = document.querySelector('.ulClass');
 let liList = document.createElement('li');
 
-socket.on('connection', function(issues) {
+socket.on('issues', function(issues) {
 
     /*for (let i in issues) {
         ulList.appendChild(createNewIssueDiv(issues[i]));

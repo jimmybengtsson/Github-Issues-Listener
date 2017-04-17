@@ -46,7 +46,7 @@ io.on('connection', function(socket) {
         let payload = req.body;
         console.log(payload);
 
-        socket.emit(payload.action, payload.issue);
+        socket.emit('issues', payload.issue);
         return res.status(202).send();
     });
 
