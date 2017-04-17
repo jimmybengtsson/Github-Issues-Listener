@@ -12,15 +12,93 @@
 
 <body>
 
-<div class="divClass">
+<div class="dropzone">
+
+    <div class="divClass">
 
     <ul class="ulClass"></ul>
 
 </div>
 
+    <ul class="ulMemory">
+
+        <li><button type="button" name="2" value="3">2 X 3</button></li>
+        <li><button type="button" name="2" value="4">2 X 4</button></li>
+        <li><button type="button" name="3" value="4">3 X 4</button></li>
+        <li><button type="button" name="4" value="4">4 X 4</button></li>
+
+    </ul>
+
+    <audio id="shutteraudio" src="https://www.soundjay.com/mechanical/camera-shutter-click-03.wav"></audio>
+
+
+
+
+
+
+</div>
+
+<ul id="menubar">
+
+    <li id="memory">
+        <img src="" alt="Memory">
+    </li>
+    <li id="webcamicon">
+        <img src="" alt="webcam">
+    </li>
+    <li id="clock">
+    </li>
+</ul>
+
 <script src="js/start.js"></script>
-<script src='/socket.io/socket.io.js'></script>
+<script src="js/Clock.js"></script>
+<script src="js/Memory.js"></script>
+<script src="js/WebCam.js"></script>
+<script src="js/NewWindow.js"></script>
+<!--<script src='/socket.io/socket.io.js'></script>-->
 
 </body>
 
 </html>
+
+<template class="dragwindow">
+
+    <div class="windowdiv">
+        <p class="appTitle"></p>
+        <img class="closewindow"></div>
+    <div class="appdiv"></div>
+
+</template>
+
+
+<template id="memorydiv">
+
+    <a href="#"><img src="image/0.png" alt="A memory brick"/></a>
+
+</template>
+
+<template id="webcam">
+    <div id="webcamDiv">
+        <video autoplay="true" id="videoElement"></video>
+        <canvas></canvas>
+        <button id="takephoto" type="button">Photo</button>
+        <div id="photoContainer"></div>
+    </div>
+
+</template>
+
+<template id="memoryChoice">
+
+    <ul class="ulMemory">
+
+        <li><button type="button" name="2 X 3" value="2, 3">2 X 3</button></li>
+        <li><button type="button" name="3 X 3" value="3, 3">3 X 3</button></li>
+        <li><button type="button" name="3 X 4" value="3, 4">3 X 4</button></li>
+        <li><button type="button" name="4 X 4" value="4, 4">4 X 4</button></li>
+
+    </ul>
+
+    </div>
+
+
+</template>

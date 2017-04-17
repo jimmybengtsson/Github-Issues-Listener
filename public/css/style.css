@@ -12,17 +12,198 @@ body {
 
 }
 
+#menubar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(102, 101, 105, 0.28);
+    padding: 5px;
+    left: 0;
+    margin-bottom: 0;
+
+}
+
 .divClass {
     margin:auto;
-    background: rgba(255, 255, 255, 0.66);
-    min-width:450px;
-    min-height:600px;
+    background: rgba(0, 0, 0, 0.6);
+    width:350px;
+    height:85%;
     padding:10px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.43);
     text-align: center;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 2%;
+    left: 2%;
+}
 
+#menubar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(102, 101, 105, 0.28);
+    padding: 5px;
+    left: 0;
+    margin-bottom: 0;
+
+}
+
+#menubar ul {
+    list-style-type: none;
+    height: 50px;
+    margin-bottom: 0;
+}
+
+#menubar li {
+    display: inline;
+    margin: 8px;
+    color: #b5b7a0;
+}
+
+#menubar img {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.43);
+    border-radius: 3px;
+    width: 50px;
+    height: 50px;
+}
+
+
+#menubar img:active {
+    box-shadow: none;
+}
+
+#clock {
+    float: right;
+    padding: 2px 20px 0 0;
+    font-size: 170%;
+
+}
+
+.windowdiv {
+    min-width: 300px;
+    min-height: 400px;
+    background-color: rgba(102, 101, 105, 0.95);
+    border-radius: 6px 6px 2px 2px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.43);
+    padding: 10px 0 5px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.windowdiv:hover {
+    cursor: move;
+}
+
+.closewindow {
+    float: right;
+    padding: 0 2px 5px 0;
+    color: #b5b7a0;
+    cursor: default;
+    width: 25px;
+    margin-top: -6px;
+
+
+}
+
+.appTitle {
+    float: left;
+    margin-top: -6px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    font-size: 120%;
+    color: #b5b7a0;
+    padding: 0 0 -5px 0;
+
+
+}
+
+
+
+
+.dropzone {
+    min-width: 100%;
+    min-height: 100%;
+    position: relative;
+}
+
+
+.appdiv img {
+
+    max-width: 100px;
+    margin: 1px;
+}
+
+.appdiv {
+    position: static;
+    background-color: rgba(246, 246, 250, 0.95);
+    margin: 20px 0 0 0;
+    height: auto;
+    min-height: 380px;
+    padding: 10px;
+    cursor: default;
+
+
+}
+
+.removed {
+    visibility: hidden;
+}
+
+#webcamDiv canvas{
+    display: none;
+}
+
+#takephoto {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: rgba(175, 41, 39, 0.5);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px rgba(153, 153, 153, 0.28);
+    position: absolute;
+    left: 270px;
+    top: 450px;
+}
+
+#takephoto:hover {background-color: rgba(175, 41, 39, 0.8)
+}
+
+#takephoto:active {
+    background-color: rgba(175, 41, 39, 0.72);
+    box-shadow: 0 5px rgba(102, 102, 102, 0.29);
+    transform: translateY(4px);
+}
+
+#videoElement {
+
+    width: 640px;
+    height: 480px;
+    position: relative;
+}
+
+.ulMemory  {
+
+    list-style-type: none;
+    position: fixed;
+    bottom: 50px;
+    left: -30px;
+    visibility: hidden;
+
+}
+
+.ulMemory button {
+    background-color: rgba(102, 101, 105, 0.28); /* Green */
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: #b5b7a0;
 }
