@@ -48,3 +48,8 @@ webhookHandler.on('*', function (repo, data) {
     console.log(data);
 
 });
+
+webhookHandler.on('error', function (err, req, res) {
+
+    console.log(err);
+});
