@@ -7,8 +7,10 @@ let fs = require('fs');
 let FetchGithub = require('./server/FetchGithub.js');
 require('dotenv').config();
 
-let GithubWebHook = require('express-github-webhook');
-let webhookHandler = GithubWebHook({ path: '/', secret: process.env.GITHUB_SECRET });
+let githubMiddleware = require('github-webhook-middleware')({
+    secret: process.env.GITHUB_SECRET,
+    limit: '1mb', // <-- optionally include the webhook json payload size limit, useful if you have large merge commits.  Default is '100kb'
+});
 
 // Start express and which port.
 
@@ -43,13 +45,12 @@ io.on('connection', function(socket) {
 
 });
 
-webhookHandler.on('issues', function (repo, data) {
+app.post('/', githubMiddleware, function(req, res) {
+    // Only respond to github push events
+    if (req.headers['x-github-event'] != 'issues') return res.status(200).end();
 
-    console.log(data.query + repo);
+    let payload = req.body;
+    let repo    = payload.repository.full_name;
 
-});
-
-webhookHandler.on('error', function (err, req, res) {
-
-    console.log(err + 'test');
+    console.log(payload);
 });
