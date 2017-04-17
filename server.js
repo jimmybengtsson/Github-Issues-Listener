@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 // Start the application.
 
 let server = https.createServer({
@@ -43,6 +44,8 @@ io.on('connection', function(socket) {
 });
 
 app.post('/', githubMiddleware, function(req, res) {
+    // Only respond to github push events
+    res.status(200).end();
 
     let payload = req.body;
     let repo    = payload.repository.full_name;
