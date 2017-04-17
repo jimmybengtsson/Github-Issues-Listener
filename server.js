@@ -7,8 +7,8 @@ let fs = require('fs');
 let FetchGithub = require('./server/FetchGithub.js');
 require('dotenv').config();
 
-let createHandler = require('github-webhook-handler');
-let handler = createHandler({ path: '/', secret: process.env.GITHUB_SECRET })
+let GithubWebHook = require('express-github-webhook');
+let webhookHandler = GithubWebHook({ path: '/', secret: process.env.GITHUB_SECRET });
 
 // Start express and which port.
 
@@ -20,6 +20,8 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(webhookHandler);
 
 // Start the application.
 
@@ -41,20 +43,8 @@ io.on('connection', function(socket) {
 
 });
 
-handler.on('error', function(err) {
-    console.error('Error:', err.message);
-});
+webhookHandler.on('event', function (repo, data) {
 
-handler.on('push', function(event) {
-    console.log('Received a push event for %s to %s',
-        event.payload.repository.name,
-        event.payload.ref);
-});
+    console.log(data);
 
-handler.on('issues', function(event) {
-    console.log('Received an issue event for %s action=%s: #%d %s',
-        event.payload.repository.name,
-        event.payload.action,
-        event.payload.issue.number,
-        event.payload.issue.title);
 });
