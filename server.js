@@ -43,7 +43,7 @@ io.on('connection', function(socket) {
 
 });
 
-webhookHandler.on('issues', function (repo, data) {
+webhookHandler.on('*', function (repo, data) {
 
     console.log(data);
 
