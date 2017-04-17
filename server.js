@@ -22,8 +22,6 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(webhookHandler);
-
 // Start the application.
 
 let server = https.createServer({
