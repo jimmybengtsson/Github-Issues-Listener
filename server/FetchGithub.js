@@ -4,13 +4,13 @@ let request = require('request');
 
 function FetchGithub(socket) {
 
-    let config = {url: process.env.ISSUES_URL, method: 'GET', headers: {'User-Agent': process.env.APP_NAME}, qs: {'access_token': process.env.GITHUB_KEY}};
+    /*let config = {url: process.env.ISSUES_URL, method: 'GET', headers: {'User-Agent': process.env.APP_NAME}, qs: {'access_token': process.env.GITHUB_KEY}};
 
-    request(config, function (error, response, body) {
+    request(config, function(error, response, body) {
         if (!error) {
             socket.emit('getAllIssues', JSON.parse(body));
         }
-    });
+    });*/
 
 }
 
