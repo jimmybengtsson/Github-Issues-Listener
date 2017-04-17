@@ -45,7 +45,7 @@ io.on('connection', function(socket) {
 
 webhookHandler.on('issues', function (repo, data) {
 
-    console.log(data.toString() + repo);
+    console.log(data.query + repo);
 
 });
 
