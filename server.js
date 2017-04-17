@@ -9,7 +9,6 @@ require('dotenv').config();
 
 let githubMiddleware = require('github-webhook-middleware')({
     secret: process.env.GITHUB_SECRET,
-    limit: '1mb', // <-- optionally include the webhook json payload size limit, useful if you have large merge commits.  Default is '100kb'
 });
 
 // Start express and which port.
@@ -46,8 +45,6 @@ io.on('connection', function(socket) {
 });
 
 app.post('/', githubMiddleware, function(req, res) {
-    // Only respond to github push events
-    if (req.headers['x-github-event'] != 'issues') return res.status(200).end();
 
     let payload = req.body;
     let repo    = payload.repository.full_name;
