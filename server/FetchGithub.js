@@ -7,7 +7,7 @@ function FetchGithub(socket) {
     let config = {url: process.env.ISSUES_URL, method: 'GET', headers: {'User-Agent': process.env.APP_NAME}, qs: {'access_token': process.env.GITHUB_KEY}};
 
     request(config, function(error, response, body) {
-        if (!error) {
+        if (!error && response.statusCode === 200) {
             socket.emit('getAllIssues', JSON.parse(body));
         }
     });
