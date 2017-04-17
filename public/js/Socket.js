@@ -3,14 +3,29 @@ let socket = io.connect();
 let ulList = document.querySelector('.ulClass');
 let liList = document.createElement('li');
 
-socket.on('issues', function(issues) {
+socket.on('FetchGithub', function(issues) {
 
     /*for (let i in issues) {
         ulList.appendChild(createNewIssueDiv(issues[i]));
         console.log(ulList);
 
     }*/
-    console.log(issues);
+    issues.forEach((i) => {
+
+        console.log(i);
+    });
+});
+
+socket.on('opened', function(data) {
+    console.log(data);
+});
+
+socket.on('reopened', function(data) {
+    console.log(data);
+});
+
+socket.on('closed', function(data) {
+    console.log(data);
 });
 
 function createNewIssueDiv(issue) {
