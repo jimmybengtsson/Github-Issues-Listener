@@ -1,4 +1,4 @@
-let socket = io.connect();
+let socket = io();
 
 let ulList = document.querySelector('.ulClass');
 let liList = document.createElement('li');
@@ -11,7 +11,7 @@ socket.on('getAllIssues', function(issues) {
     }
 });
 
-function createNewIssueDiv(issue, notification) {
+function createNewIssueDiv(issue) {
     var issueBlock = document.createElement('a');
     var title = document.createElement('span');
     var description = document.createElement('p');
