@@ -8,6 +8,7 @@ socket.on('getAllIssues', function(issues) {
     for (let i in issues) {
         liList.appendChild(createNewIssueDiv(issues[i]));
         ulList.appendChild(liList);
+        console.log(liList);
     }
 });
 
