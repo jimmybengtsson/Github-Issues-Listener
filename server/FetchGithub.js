@@ -8,6 +8,7 @@ function FetchGithub(socket) {
 
     request(config, function(error, response, body) {
         if (!error && response.statusCode === 200) {
+            console.log(JSON.parse(body));
             socket.emit('getAllIssues', JSON.parse(body));
         }
     });
