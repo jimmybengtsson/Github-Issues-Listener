@@ -259,14 +259,15 @@ body {
 
 .issueNotification {
     position: absolute;
-    top: 10%;
-    right: 10%;
+    top: 2%;
+    right: 2%;
     background: rgba(217, 217, 217, 0.89);
     padding:2px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.43);
     text-align: left;
     border-radius: 3px;
     width: 200px;
-    height:150px;
+    height:120px;
+    color: rgb(33, 255, 21);
 
 }
