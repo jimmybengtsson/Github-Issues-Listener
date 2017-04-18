@@ -7,7 +7,7 @@ function FetchGithub() {
     let options = {
         uri: process.env.ISSUES_URL,
         qs: {access_token: process.env.GITHUB_KEY},
-        headers: {'User-Agent': 'Request-Promise'},
+        headers: {'User-Agent': process.env.APP_NAME},
         json: true
     };
 
