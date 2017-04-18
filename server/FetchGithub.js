@@ -1,21 +1,23 @@
 'use strict';
 
-let request = require('request');
+let rp = require('request-promise');
 
 function FetchGithub() {
 
-    let config = {
-        url: process.env.ISSUES_URL,
-        method: 'GET',
-        headers: {'User-Agent': process.env.APP_NAME},
-        qs: {access_token: process.env.GITHUB_KEY}
+    let options = {
+        uri: process.env.ISSUES_URL,
+        qs: {access_token: process.env.GITHUB_KEY},
+        headers: {'User-Agent': 'Request-Promise'}
     };
 
-    request(config, function(error, response, body) {
-        if (!error && response.statusCode === 200) {
-            console.log(body);
-            return body;
-        }
+    rp(options)
+        .then(function(data) {
+
+            console.log(data);
+            return data;
+
+    }).catch(function(err) {
+        console.log(err);
     });
 
 }
