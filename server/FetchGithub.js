@@ -14,7 +14,7 @@ function FetchGithub(socket) {
     return rp(options)
         .then(function(data) {
 
-            socket.emit(JSON.parse(data));
+            socket.emit(data);
 
         }).catch(function(err) {
         console.log(err);
