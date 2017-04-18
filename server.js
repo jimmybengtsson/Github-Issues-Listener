@@ -40,16 +40,15 @@ let io = require('socket.io')(server);
 
 io.on('connection', function(socket) {
 
-    app.post('/', githubMiddleware, function(req, res) {
-
-        payload = req.body;
-        console.log(JSON.parse(payload) + 'server.js');
-        socket.broadcast.emit('newIssue', payload);
-        return res.status(202).send();
-    });
-
     socket.emit('allIssues', FetchGithub());
     console.log('io');
 
 });
 
+app.post('/', githubMiddleware, function(req, res) {
+
+    payload = req.body;
+    console.log(payload);
+    io.broadcast.emit('newIssue', payload);
+    return res.status(202).send();
+});
