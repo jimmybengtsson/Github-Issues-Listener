@@ -43,7 +43,7 @@ app.post('/', githubMiddleware, function(req, res) {
     payload = req.body;
     console.log(payload);
 
-    io.on('connection', function(socket) {
+    io.on('newIssue', function(socket) {
 
         socket.emit('newIssue', payload);
 
