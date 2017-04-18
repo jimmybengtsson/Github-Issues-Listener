@@ -210,16 +210,27 @@ body {
 
 .issueLi {
     margin:auto;
-    background: rgba(217, 217, 217, 0.75);
-    padding:10px;
+    background: rgba(217, 217, 217, 0.89);
+    padding:2px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.43);
     text-align: left;
-    font-size: 20px;
     border-radius: 3px;
+    list-style: none;
 
 }
 
 .issueAuthor {
-    background-color: rgba(33, 255, 21, 0.84);
-    font-size: 150%;
+    color: rgb(33, 255, 21);
+    font-size: 24px;
+    padding: 2px;
+}
+
+.issueTitle {
+    font-size: 20px;
+    padding: 2px;
+}
+
+.issueText {
+    font-size: 16px;
+    padding: 2px;
 }

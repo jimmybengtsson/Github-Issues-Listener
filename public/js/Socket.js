@@ -11,7 +11,7 @@ socket.on('allIssues', function(issues) {
     }*/
     //issues.forEach((i) => {
 
-        console.log(issues);
+    console.log(issues);
     //});
 });
 
@@ -36,6 +36,10 @@ function createNewIssueDiv(issue) {
     author.textContent = issue.issue.user.login + ' ' + issue.action + ' an issue!';
     title.textContent = issue.issue.title;
     text.textContent = issue.issue.body;
+
+    if (issue.action === 'opened') {
+        author.style.color = '#FF0208';
+    }
 
     issueDiv.appendChild(author);
     issueDiv.appendChild(title);
