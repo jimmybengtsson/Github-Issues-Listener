@@ -15,12 +15,12 @@ socket.on('allIssues', function(issues) {
 });
 
 socket.on('newIssue', function(data) {
-    console.log('new issue on');
-    console.log(data);
-    return createNewIssueDiv(data);
+
+    issueNotification(data);
+    issueFromHook(data);
 });
 
-function createNewIssueDiv(issue) {
+function issueFromHook(issue) {
 
     let ulList = document.querySelector('.ulClass');
 
@@ -85,5 +85,32 @@ function getIssues(issue) {
     issueLi.appendChild(issueLink);
 
     ulList.appendChild(issueLi);
+}
+
+function issueNotification(issue) {
+
+    let template = document.querySelector('.issueTemplate');
+    let clone = document.importNode(template.content, true);
+    let dropZone = document.querySelector('.dropzone');
+    let notiDiv = clone.querySelector('.issueNotification');
+    let author = clone.querySelector('.issueAuthor');
+    let img = clone.querySelector('.issueImg');
+
+    author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
+    img.src = issue.sender.avatar_url;
+
+    if (issue.action === 'opened' || issue.action === 'reopened') {
+        author.style.color = '#FF0208';
+    }
+
+    notiDiv.appendChild(img);
+    notiDiv.appendChild(author);
+
+    dropZone.appendChild(notiDiv);
+
+    setTimeout(function(){
+        dropZone.removeChild(notiDiv);
+    }, 5000);
+
 }
 
