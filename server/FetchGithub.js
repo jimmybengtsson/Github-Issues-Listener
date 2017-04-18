@@ -1,5 +1,5 @@
 var githubAPI = {
-    fetchAllIssues: function(socket) {
+    fetchAllIssues: function() {
         var request = require('request');
         var headers = {'User-Agent': process.env.APP_NAME};
         var options = {url: process.env.ISSUES_URL, method: 'GET', headers: headers, qs: {'access_token': process.env.GITHUB_KEY}};
@@ -10,6 +10,6 @@ var githubAPI = {
             }
         });
     }
-}
+};
 
 module.exports = githubAPI;
