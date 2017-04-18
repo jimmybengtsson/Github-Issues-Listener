@@ -33,7 +33,7 @@ function createNewIssueDiv(issue) {
     let title = clone.querySelector('.issueTitle');
     let text = clone.querySelector('.issueText');
 
-    author.textContent = issue.issue.user.login;
+    author.textContent = issue.issue.user.login + ' ' + issue.action + ' an issue!';
     title.textContent = issue.issue.title;
     text.textContent = issue.issue.body;
 
