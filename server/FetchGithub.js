@@ -11,7 +11,7 @@ function FetchGithub() {
         json: true
     };
 
-    rp(options)
+    return rp(options)
         .then(function(data) {
 
             console.log(data);
