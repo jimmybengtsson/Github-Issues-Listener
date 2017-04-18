@@ -6,11 +6,12 @@ socket.on('allIssues', function(issues) {
 
     console.log(issues);
 
-    for (let issue in issues) {
+    issues.forEach((i) => {
 
-        getIssues(issue);
+        getIssues(i);
 
-    }
+    });
+
 });
 
 socket.on('newIssue', function(data) {
