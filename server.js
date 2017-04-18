@@ -42,21 +42,14 @@ app.post('/', githubMiddleware, function(req, res) {
 
     payload = req.body;
     console.log(payload);
-
-    io.on('newIssue', function(socket) {
-
-        socket.emit('newIssue', payload);
-
-        console.log('io inside');
-
-    });
-
     return res.status(202).send();
 });
 
 io.on('connection', function(socket) {
 
-    socket.emit('allIssues', FetchGithub());
+    socket.broadcast.emit('newIssue', payload);
+
+    FetchGithub(socket);
     console.log('io');
 
 });
