@@ -4,13 +4,13 @@ let socket = io();
 
 socket.on('allIssues', function(issues) {
 
-    console.log('All issue on');
+    console.log(issues);
 
-    issues.forEach((i) => {
+    for (let issue in issues) {
 
-        getIssues(i);
+        getIssues(issue);
 
-    });
+    }
 });
 
 socket.on('newIssue', function(data) {
