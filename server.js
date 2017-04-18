@@ -31,10 +31,10 @@ let server = https.createServer({
     key: fs.readFileSync('./config/sslcerts/key.pem'),
     cert: fs.readFileSync('./config/sslcerts/cert.pem')
 
-}, app.listen(port, () => {
+}, app).listen(port, () => {
     console.log('Express started on ' + port);
     console.log('Terminate with ctrl-c');
-}));
+});
 
 let io = require('socket.io')(server);
 
