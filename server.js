@@ -52,7 +52,7 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket) {
 
-    socket.emit('allIssues', FetchGithub.fetchAllIssues());
+    socket.emit('allIssues', FetchGithub());
     console.log('io');
 
 });
