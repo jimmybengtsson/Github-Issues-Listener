@@ -12,20 +12,20 @@ socket.on('getAllIssues', function(issues) {
     }*/
     issues.forEach((i) => {
 
-        console.log(i);
+        console.log(i + 'getissues');
     });
 });
 
 socket.on('newissue', function(data) {
-    console.log(data);
+    console.log(data + 'new');
 });
 
 socket.on('reopened', function(data) {
-    console.log(data);
+    console.log(data + 'reopened');
 });
 
 socket.on('closed', function(data) {
-    console.log(data);
+    console.log(data + 'closes');
 });
 
 function createNewIssueDiv(issue) {
