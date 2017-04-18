@@ -48,7 +48,7 @@ app.post('/', githubMiddleware, function(req, res) {
 
 io.on('connection', function(socket) {
 
-    socket.emit('allIssues', FetchGithub(socket));
+    FetchGithub(socket);
     console.log('io');
 
 });
