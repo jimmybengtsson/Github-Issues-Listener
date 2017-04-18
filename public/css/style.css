@@ -216,14 +216,14 @@ body {
 
 .issueTitle {
     font-size: 20px;
-    padding: 2px;
+    padding: 3px;
     margin: 1px;
 }
 
 .issueText {
     font-size: 16px;
-    padding: 2px;
-    margin: 1px;
+    padding: 3px;
+    margin: 1px 1px 5px 1px;
 }
 
 .issueImg {
@@ -254,5 +254,5 @@ body {
     font-size: 16px;
     border-radius: 5px;
     border: 1px #000000;
-    margin: 5px;
+    margin: 10px;
 }
