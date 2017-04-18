@@ -89,7 +89,7 @@ function getIssues(issue) {
 
 function issueNotification(issue) {
 
-    let template = document.querySelector('.issueTemplate');
+    let template = document.querySelector('.notification');
     let clone = document.importNode(template.content, true);
     let dropZone = document.querySelector('.dropzone');
     let notiDiv = clone.querySelector('.issueNotification');
