@@ -47,7 +47,13 @@ app.post('/', githubMiddleware, function(req, res) {
 
 io.on('connection', function(socket) {
 
-    socket.broadcast.emit('newIssue', payload);
+    app.post('/', githubMiddleware, function(req, res) {
+
+        payload = req.body;
+        console.log(payload);
+        socket.broadcast.emit('newIssue', payload);
+        return res.status(202).send();
+    });
 
     socket.emit('allIssues', FetchGithub());
     console.log('io');

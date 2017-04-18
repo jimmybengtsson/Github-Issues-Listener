@@ -1,4 +1,4 @@
-let socket = io();
+let socket = io.connect();
 
 let ulList = document.querySelector('.ulClass');
 let liList = document.createElement('li');
