@@ -1,26 +1,15 @@
-'use strict';
+var githubAPI = {
+    fetchAllIssues: function(socket) {
+        var request = require('request');
+        var headers = {'User-Agent': process.env.APP_NAME};
+        var options = {url: process.env.ISSUES_URL, method: 'GET', headers: headers, qs: {'access_token': process.env.GITHUB_KEY}};
 
-let rp = require('request-promise');
-
-function FetchGithub() {
-
-    let options = {
-        uri: process.env.ISSUES_URL,
-        qs: {access_token: process.env.GITHUB_KEY},
-        headers: {'User-Agent': process.env.APP_NAME},
-        json: true
-    };
-
-    return rp(options)
-        .then(function(data) {
-
-            console.log(data);
-            return data;
-
-    }).catch(function(err) {
-        console.log(err);
-    });
-
+        request(options, function (error, response, body) {
+            if(!error && response.statusCode === 200) {
+                console.log(JSON.parse(body));
+            }
+        });
+    }
 }
 
-module.exports = FetchGithub;
+module.exports = githubAPI;
