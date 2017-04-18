@@ -14,7 +14,7 @@ socket.on('allIssues', function(issues) {
     }*/
     //issues.forEach((i) => {
 
-        console.log(JSON.parse(issues);
+        console.log(JSON.parse(issues));
     //});
 });
 
