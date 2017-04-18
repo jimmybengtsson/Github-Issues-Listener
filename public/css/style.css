@@ -203,8 +203,6 @@ body {
     text-align: left;
     border-radius: 3px;
     list-style: none;
-    align-items: stretch;
-    flex: 1
 
 }
 
@@ -227,9 +225,11 @@ body {
 }
 
 .issueImg {
-    max-height: 130px;
-    max-width: 130px;
-    float: left;
+    max-height: 100px;
+    max-width: 100px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
 }
 
 .divClass {
@@ -243,5 +243,9 @@ body {
     position: absolute;
     top: 2%;
     left: 2%;
-    display: flex;
+}
+
+.ulClass {
+    margin: 2px;
+    overflow: scroll;
 }
