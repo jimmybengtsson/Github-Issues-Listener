@@ -217,13 +217,13 @@ body {
 .issueTitle {
     font-size: 20px;
     padding: 2px;
-    margin: 0;
+    margin: 1px;
 }
 
 .issueText {
     font-size: 16px;
     padding: 2px;
-    margin: 0;
+    margin: 1px;
 }
 
 .issueImg {
@@ -249,7 +249,7 @@ body {
 
 .issueLink {
     background: rgba(0, 0, 0, 0.6);
-    padding: 5px;
+    padding: 3px;
     color: white;
     font-size: 16px;
     border-radius: 5px;

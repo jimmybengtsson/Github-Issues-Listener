@@ -36,8 +36,8 @@ function createNewIssueDiv(issue) {
     let issueLink = clone.querySelector('.issueLink');
 
     author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
-    title.textContent = 'Title: '.bold() + issue.issue.title + ' #'.bold + issue.issue.id;
-    text.textContent = 'Message: '.bold() + issue.issue.body;
+    title.textContent = 'Title: ' + issue.issue.title + ' #' + issue.issue.id;
+    text.textContent = 'Message: ' + issue.issue.body;
     img.src = issue.sender.avatar_url;
     issueLink.setAttribute('href', issue.issue.html_url);
 
