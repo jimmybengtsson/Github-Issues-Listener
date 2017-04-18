@@ -10,7 +10,7 @@ require('dotenv').config();
 let payload;
 
 let githubMiddleware = require('github-webhook-middleware')({
-    secret: process.env.GITHUB_SECRET
+    secret: process.env.GITHUB_SECRET,
 });
 
 // Start express and which port.
@@ -52,7 +52,8 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket) {
 
-    FetchGithub(socket);
+    socket.emit('allIssues', FetchGithub(socket));
+    console.log('io');
 
 });
 
