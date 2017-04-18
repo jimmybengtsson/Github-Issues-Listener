@@ -14,7 +14,7 @@ function FetchGithub(socket) {
     return rp(options)
         .then(function(data) {
 
-            socket.emit(data);
+            socket.emit('allIssues', data);
 
         }).catch(function(err) {
         console.log(err);

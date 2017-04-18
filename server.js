@@ -46,10 +46,6 @@ app.post('/', githubMiddleware, function(req, res) {
     return res.status(202).send();
 });
 
-app.get('/', function(req, res) {
-    res.sendfile('public/index.html');
-});
-
 io.on('connection', function(socket) {
 
     socket.emit('allIssues', FetchGithub(socket));
