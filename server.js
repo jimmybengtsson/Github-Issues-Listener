@@ -31,10 +31,10 @@ let server = https.createServer({
     key: fs.readFileSync('./config/sslcerts/key.pem'),
     cert: fs.readFileSync('./config/sslcerts/cert.pem')
 
-}, app).listen(port, () => {
+}, app.listen(port, () => {
     console.log('Express started on ' + port);
     console.log('Terminate with ctrl-c');
-});
+}));
 
 let io = require('socket.io')(server);
 
@@ -42,14 +42,17 @@ app.post('/', githubMiddleware, function(req, res) {
 
     payload = req.body;
     console.log(payload);
+    io.emit('newIssue', payload);
     return res.status(202).send();
+});
+
+app.get('/', function(req, res) {
+    res.sendfile('public/index.html');
 });
 
 io.on('connection', function(socket) {
 
-    socket.broadcast.emit('newIssue', payload);
-
-    FetchGithub(socket);
+    socket.emit('allIssues', FetchGithub());
     console.log('io');
 
 });

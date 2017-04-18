@@ -5,6 +5,8 @@ let liList = document.createElement('li');
 
 socket.on('allIssues', function(issues) {
 
+    console.log('All issue on');
+
     /*for (let i in issues) {
         ulList.appendChild(createNewIssueDiv(issues[i]));
         console.log(ulList);
@@ -17,6 +19,7 @@ socket.on('allIssues', function(issues) {
 });
 
 socket.on('newIssue', function(data) {
+    console.log('new issue on');
     console.log(data + 'new');
 });
 
