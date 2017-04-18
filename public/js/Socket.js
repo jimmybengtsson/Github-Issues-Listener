@@ -1,9 +1,9 @@
-let socket = io.connect();
+let socket = io();
 
 let ulList = document.querySelector('.ulClass');
 let liList = document.createElement('li');
 
-socket.on('getAllIssues', function(issues) {
+socket.on('allIssues', function(issues) {
 
     /*for (let i in issues) {
         ulList.appendChild(createNewIssueDiv(issues[i]));
@@ -16,16 +16,8 @@ socket.on('getAllIssues', function(issues) {
     });
 });
 
-socket.on('newissue', function(data) {
+socket.on('newIssue', function(data) {
     console.log(data + 'new');
-});
-
-socket.on('reopened', function(data) {
-    console.log(data + 'reopened');
-});
-
-socket.on('closed', function(data) {
-    console.log(data + 'closes');
 });
 
 function createNewIssueDiv(issue) {
