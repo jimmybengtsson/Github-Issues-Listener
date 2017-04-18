@@ -34,14 +34,12 @@ function createNewIssueDiv(issue) {
     let text = clone.querySelector('.issueText');
     let img = clone.querySelector('.issueImg');
     let issueLink = clone.querySelector('.issueLink');
-    let commentsLink = clone.querySelector('.commentsLink');
 
     author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
-    title.textContent = issue.issue.title;
-    text.textContent = issue.issue.body;
+    title.textContent = 'Title: '.bold() + issue.issue.title + ' #'.bold + issue.issue.id;
+    text.textContent = 'Message: '.bold() + issue.issue.body;
     img.src = issue.sender.avatar_url;
-    issueLink.setAttribute('href', issue.issue.url);
-    commentsLink.setAttribute('href', issue.issue.comments_url);
+    issueLink.setAttribute('href', issue.issue.html_url);
 
     if (issue.action === 'opened' || issue.action === 'reopened') {
         author.style.color = '#FF0208';
@@ -54,7 +52,6 @@ function createNewIssueDiv(issue) {
     issueLi.appendChild(title);
     issueLi.appendChild(text);
     issueLi.appendChild(issueLink);
-    issueLi.appendChild(commentsLink);
 
     ulList.insertBefore(issueLi, ulList.childNodes[0]);
 }
