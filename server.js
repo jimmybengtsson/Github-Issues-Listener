@@ -50,7 +50,7 @@ io.on('connection', function(socket) {
     app.post('/', githubMiddleware, function(req, res) {
 
         payload = req.body;
-        console.log(payload);
+        console.log(JSON.parse(payload).action);
         socket.broadcast.emit('newIssue', payload);
         return res.status(202).send();
     });
