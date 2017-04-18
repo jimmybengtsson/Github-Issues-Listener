@@ -14,13 +14,13 @@ socket.on('allIssues', function(issues) {
     }*/
     //issues.forEach((i) => {
 
-        console.log(JSON.parse(issues) + 'getissues');
+        console.log(JSON.parse(issues);
     //});
 });
 
 socket.on('newIssue', function(data) {
     console.log('new issue on');
-    console.log(data + 'new');
+    console.log(data);
 });
 
 function createNewIssueDiv(issue) {
