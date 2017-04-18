@@ -2,7 +2,7 @@
 
 let rp = require('request-promise');
 
-function FetchGithub() {
+function FetchGithub(socket) {
 
     let options = {
         uri: process.env.ISSUES_URL,
@@ -14,8 +14,7 @@ function FetchGithub() {
     return rp(options)
         .then(function(data) {
 
-            console.log(data);
-            return data;
+            socket.emit(JSON.parse(data));
 
         }).catch(function(err) {
         console.log(err);
