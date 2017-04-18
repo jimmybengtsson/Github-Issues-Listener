@@ -41,7 +41,7 @@ function createNewIssueDiv(issue) {
     issueDiv.appendChild(title);
     issueDiv.appendChild(text);
 
-    issueLi.appendChild(issue);
+    issueLi.appendChild(issueDiv);
     ulList.appendChild(issueLi);
 }
 
