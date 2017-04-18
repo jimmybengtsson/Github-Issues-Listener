@@ -23,19 +23,6 @@ body {
 
 }
 
-.divClass {
-    margin:auto;
-    background: rgba(0, 0, 0, 0.6);
-    width:350px;
-    height:85%;
-    padding:10px;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.43);
-    text-align: center;
-    position: absolute;
-    top: 2%;
-    left: 2%;
-}
-
 #menubar {
     position: fixed;
     bottom: 0;
@@ -216,15 +203,16 @@ body {
     text-align: left;
     border-radius: 3px;
     list-style: none;
+    align-items: stretch;
+    flex: 1
 
 }
 
 .issueDiv {
-    display: inline;
     color: rgb(33, 255, 21);
     font-size: 24px;
     padding: 2px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.43);
+    border-bottom: 1px rgba(0, 0, 0, 0.6);
 }
 
 .issueTitle {
@@ -239,6 +227,21 @@ body {
 }
 
 .issueImg {
-    max-height: 80px;
-    max-width: 80px;
+    max-height: 130px;
+    max-width: 130px;
+    float: left;
+}
+
+.divClass {
+    margin:auto;
+    background: rgba(0, 0, 0, 0.6);
+    width:350px;
+    height:85%;
+    padding:10px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.43);
+    text-align: center;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    display: flex;
 }
