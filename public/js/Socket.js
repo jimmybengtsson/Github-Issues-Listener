@@ -37,7 +37,7 @@ function createNewIssueDiv(issue) {
     title.textContent = issue.issue.title;
     text.textContent = issue.issue.body;
 
-    if (issue.action === 'opened') {
+    if (issue.action === 'opened' || issue.action === 'reopened') {
         author.style.color = '#FF0208';
     }
 
