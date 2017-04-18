@@ -12,7 +12,7 @@ socket.on('allIssues', function(issues) {
     }*/
     //issues.forEach((i) => {
 
-        console.log(issues + 'getissues');
+        console.log(JSON.parse(issues) + 'getissues');
     //});
 });
 

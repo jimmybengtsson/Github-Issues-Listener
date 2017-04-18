@@ -38,6 +38,22 @@ let server = https.createServer({
 
 let io = require('socket.io')(server);
 
+app.post('/', githubMiddleware, function(req, res) {
+
+    payload = req.body;
+    console.log(payload);
+
+    io.on('connection', function(socket) {
+
+        socket.emit('newIssue', payload);
+
+        console.log('io inside');
+
+    });
+
+    return res.status(202).send();
+});
+
 io.on('connection', function(socket) {
 
     socket.emit('allIssues', FetchGithub());
@@ -45,10 +61,3 @@ io.on('connection', function(socket) {
 
 });
 
-app.post('/', githubMiddleware, function(req, res) {
-
-    payload = req.body;
-    console.log(payload);
-    io.broadcast.emit('newIssue', payload);
-    return res.status(202).send();
-});
