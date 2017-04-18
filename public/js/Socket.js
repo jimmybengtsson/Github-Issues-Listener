@@ -74,7 +74,7 @@ function getIssues(issue) {
     title.textContent = 'Title: ' + issue.title;
     text.textContent = 'Message: ' + issue.body;
     img.src = issue.user.avatar_url;
-    issueLink.setAttribute('href', issue.html_url);
+    issueLink.setAttribute('href', issue.url);
 
     issueDiv.appendChild(img);
     issueDiv.appendChild(author);
