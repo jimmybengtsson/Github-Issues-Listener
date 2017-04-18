@@ -40,8 +40,8 @@ function createNewIssueDiv(issue) {
     title.textContent = issue.issue.title;
     text.textContent = issue.issue.body;
     img.src = issue.sender.avatar_url;
-    issueLink.src = issue.issue.url;
-    commentsLink.src = issue.issue.comments_url;
+    issueLink.setAttribute('href', issue.issue.url);
+    commentsLink.setAttribute('href', issue.issue.comments_url);
 
     if (issue.action === 'opened' || issue.action === 'reopened') {
         author.style.color = '#FF0208';
