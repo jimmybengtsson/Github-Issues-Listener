@@ -9,6 +9,7 @@ function FetchGithub() {
         method: 'GET',
         qs: {access_token: process.env.GITHUB_KEY},
         headers: {'User-Agent': 'Request-Promise'},
+        json: true
 
     };
 
