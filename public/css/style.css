@@ -219,7 +219,8 @@ body {
 
 }
 
-.issueAuthor {
+.issueDiv {
+    display: inline;
     color: rgb(33, 255, 21);
     font-size: 24px;
     padding: 2px;
@@ -238,6 +239,6 @@ body {
 }
 
 .issueImg {
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 80px;
+    max-width: 80px;
 }

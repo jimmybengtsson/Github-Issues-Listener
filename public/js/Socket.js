@@ -50,6 +50,6 @@ function createNewIssueDiv(issue) {
     issueLi.appendChild(title);
     issueLi.appendChild(text);
 
-    ulList.appendChild(issueLi);
+    ulList.insertBefore(issueLi, ulList.childNodes[0]);
 }
 
