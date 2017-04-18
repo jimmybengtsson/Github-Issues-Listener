@@ -6,8 +6,10 @@ function FetchGithub() {
 
     let options = {
         uri: process.env.ISSUES_URL,
+        method: 'GET',
         qs: {access_token: process.env.GITHUB_KEY},
         headers: {'User-Agent': 'Request-Promise'},
+
     };
 
     return rp(options)
