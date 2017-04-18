@@ -10,10 +10,10 @@ socket.on('allIssues', function(issues) {
         console.log(ulList);
 
     }*/
-    issues.forEach((i) => {
+    //issues.forEach((i) => {
 
-        console.log(i + 'getissues');
-    });
+        console.log(issues + 'getissues');
+    //});
 });
 
 socket.on('newIssue', function(data) {

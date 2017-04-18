@@ -36,12 +36,12 @@ let server = https.createServer({
     console.log('Terminate with ctrl-c');
 });
 
-let io = require("socket.io")(server);
+let io = require('socket.io')(server);
 
 app.post('/', githubMiddleware, function(req, res) {
 
     payload = req.body;
-    console.log(payload.action);
+    console.log(payload);
     return res.status(202).send();
 });
 
