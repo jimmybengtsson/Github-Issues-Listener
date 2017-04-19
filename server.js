@@ -51,7 +51,7 @@ app.post('/', githubMiddleware, function(req, res) {
 
     payload = req.body;
 
-    if (req.headers.X-GitHub-Event === 'issue_comment') {
+    if (req.headers.x-github-event === 'issue_comment') {
         io.emit('newComment', payload);
         return res.status(202).send();
     } else {
