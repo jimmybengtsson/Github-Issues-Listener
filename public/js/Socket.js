@@ -196,7 +196,12 @@ function commentFromHook(issue) {
 
             if (temp[j].textContent === ('ID: ' + issue.issue.id)) {
 
-                console.log(temp[j]);
+                for (let k = 0; k < temp.length; k++) {
+
+                    if (temp[k].className === 'issueComments') {
+                        temp[k].textContent = 'Comments: ' + issue.comments;
+                    }
+                }
 
                 let comment = document.createElement('a');
                 comment.setAttribute('href', issue.comment.url);
