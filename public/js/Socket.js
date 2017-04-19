@@ -188,7 +188,7 @@ function commentFromHook(issue) {
 
     for (let i = 0; i < children.length; i++) {
 
-        for (let j = 0; j < i.length; j++) {
+        i.forEach((j) => {
 
             console.log(j.innerHTML);
             console.log(j.innerText);
@@ -202,7 +202,7 @@ function commentFromHook(issue) {
                 i.insertBefore(comment, i.childNodes[0]);
 
             }
-        }
+        });
     }
 }
 
