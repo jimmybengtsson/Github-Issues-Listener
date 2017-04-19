@@ -184,11 +184,9 @@ function commentFromHook(issue) {
 
     let ulList = document.querySelector('.ulClass');
 
-    let childrens = ulList.children;
+    for (let i = 0; i < ulList.length; i++) {
 
-    for (let i = 0; i < childrens.length; i++) {
-
-        let temp = childrens[i].children;
+        let temp = ulList[i].children;
 
         for (let j = 0; j < temp.length; j++) {
 
@@ -204,7 +202,7 @@ function commentFromHook(issue) {
                 comment.textContent = 'New Comment';
                 comment.className = 'newComment';
 
-                return childrens[i].insertBefore(comment, childrens[i].childNodes[0]);
+                return ulList[i].insertBefore(comment, ulList[i].childNodes[0]);
 
             }
         }
