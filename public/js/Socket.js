@@ -6,7 +6,6 @@ let socket = io();
 
 socket.on('allIssues', function(issues) {
 
-    console.log(issues);
 
     issues.forEach((i) => {
 
@@ -43,8 +42,8 @@ function issueFromHook(issue) {
     // Get info from the sockets response
 
     author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
-    title.textContent = 'Title:\n' + issue.issue.title;
-    text.textContent = 'Message:\n' + issue.issue.body;
+    title.textContent = 'Title: ' + issue.issue.title;
+    text.textContent = 'Message: ' + issue.issue.body;
     img.src = issue.sender.avatar_url;
     issueLink.setAttribute('href', issue.issue.html_url);
 
@@ -83,10 +82,10 @@ function getIssues(issue) {
 
     // Get info from the socket
 
-    author.textContent = 'Created by:\n' + issue.user.login;
+    author.textContent = 'Created by: ' + issue.user.login;
     issueDiv.className = 'issueDivAlt';
-    title.textContent = 'Title:\n' + issue.title;
-    text.textContent = 'Message:\n' + issue.body;
+    title.textContent = 'Title: ' + issue.title;
+    text.textContent = 'Message: ' + issue.body;
     img.src = issue.user.avatar_url;
     issueLink.setAttribute('href', issue.html_url);
 
