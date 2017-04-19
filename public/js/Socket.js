@@ -192,7 +192,7 @@ function commentFromHook(issue) {
 
     for (let i = 0; i < childrens.length; i++) {
 
-        console.log(i);
+        console.log(childrens[i]);
 
         /*let childrenAlt = i.children;
 
