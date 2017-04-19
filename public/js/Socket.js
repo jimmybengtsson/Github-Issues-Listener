@@ -186,7 +186,11 @@ function commentFromHook(issue) {
 
     let children = ulList.childNodes;
 
+    console.log(children);
+
     for (let i = 0; i < children.length; i++) {
+
+        console.log(i);
 
 
         if (i.querySelector('.issueID').textContent === issue.id) {
