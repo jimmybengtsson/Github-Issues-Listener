@@ -192,9 +192,9 @@ function commentFromHook(issue) {
 
         for (let j = 0; j < temp.length; j++) {
 
-            console.log(temp[j].textContent);
+            console.log(temp[5].textContent);
 
-            if (temp[j].textContent === ('ID: ' + issue.id)) {
+            if (temp[j].textContent === ('ID: ' + issue.issue.id)) {
 
                 console.log(temp[j]);
 
