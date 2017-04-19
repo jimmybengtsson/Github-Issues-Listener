@@ -305,3 +305,12 @@ body {
     color: rgb(33, 255, 21);
 
 }
+
+.newComment {
+    background: rgba(255, 7, 33, 0.85);
+    padding: 2px;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px 5px 0 0;
+    border: 1px #000000;
+}

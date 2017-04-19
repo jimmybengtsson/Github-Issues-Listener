@@ -194,9 +194,13 @@ function commentFromHook(issue) {
 
             if (temp[j].textContent === ('ID: ' + issue.issue.id)) {
 
-                let comment = document.createElement('p');
-                let text = document.createTextNode('New Comment');
-                comment.appendChild(text);
+                let commentsTemp = temp.querySelector('.issueComments');
+                commentsTemp.textContent = 'Comments: ' + issue.issue.comments;
+
+                let comment = document.createElement('a');
+                comment.setAttribute('href', issue.comment.url);
+                comment.textContent = 'New Comment';
+                comment.className = 'newComment';
 
                 return childrens[i].insertBefore(comment, childrens[i].childNodes[0]);
 
