@@ -190,16 +190,13 @@ function commentFromHook(issue) {
 
         let temp = childrens[i].children;
 
-        console.log(temp);
+        console.log(temp.p.issueComments);
 
         for (let j = 0; j < temp.length; j++) {
 
             if (temp[j].textContent === ('ID: ' + issue.issue.id)) {
 
                 console.log(temp[j]);
-
-                let commentsTemp = temp.querySelector('.issueComments');
-                commentsTemp.textContent = 'Comments: ' + issue.issue.comments;
 
                 let comment = document.createElement('a');
                 comment.setAttribute('href', issue.comment.url);
