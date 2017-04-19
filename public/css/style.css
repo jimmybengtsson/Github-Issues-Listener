@@ -289,9 +289,6 @@ body {
     font-size: 16px;
     border-radius: 5px;
     border: 1px #000000;
-    float: right;
-    right: 0;
-    bottom: 20px;
 }
 
 .issueNotification {
