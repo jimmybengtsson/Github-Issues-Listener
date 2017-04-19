@@ -186,6 +186,8 @@ function commentFromHook(issue) {
 
     let children = ulList.children;
 
+    console.log(children);
+
     for (let i = 0; i < children.length; i++) {
 
         console.log(i.children);
