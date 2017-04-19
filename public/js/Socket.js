@@ -43,15 +43,19 @@ function issueFromHook(issue) {
 
     // Get info from the sockets response
 
-    author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
-    title.textContent = 'Title: ' + issue.issue.title;
-    text.textContent = 'Message: ' + issue.issue.body;
-    comments.textContent = 'Comments: ' + issue.issue.comments;
-    date.textContent = 'Created: ' + formatDate(new Date(issue.issue.created_at));
-    img.src = issue.sender.avatar_url;
-    issueLink.setAttribute('href', issue.issue.html_url);
+    author.textContent = issue.body.sender.login + ' ' + issue.body.action + ' an issue!';
+    title.textContent = 'Title: ' + issue.body.issue.title;
+    text.textContent = 'Message: ' + issue.body.issue.body;
+    comments.textContent = 'Comments: ' + issue.body.issue.comments;
+    date.textContent = 'Created: ' + formatDate(new Date(issue.body.issue.created_at));
+    img.src = issue.body.sender.avatar_url;
+    issueLink.setAttribute('href', issue.body.issue.html_url);
 
-    if (issue.action === 'opened' || issue.action === 'reopened') {
+    if (issue.headers.x-github-event === 'issue_comment') {
+        author.textContent = issue.body.sender.login + ' commented an issue!';
+    }
+
+    else if (issue.body.action === 'opened' || issue.body.action === 'reopened') {
         issueDiv.className = 'issueDivAlt';
     }
 
@@ -90,14 +94,14 @@ function getIssues(issue) {
 
     // Get info from the socket
 
-    author.textContent = 'Created by: ' + issue.user.login;
+    author.textContent = 'Created by: ' + issue.body.user.login;
     issueDiv.className = 'issueDivAlt';
-    title.textContent = 'Title: ' + issue.title;
-    text.textContent = 'Message: ' + issue.body;
-    comments.textContent = 'Comments: ' + issue.comments;
-    date.textContent = 'Created: ' + formatDate(new Date(issue.created_at));
-    img.src = issue.user.avatar_url;
-    issueLink.setAttribute('href', issue.html_url);
+    title.textContent = 'Title: ' + issue.body.title;
+    text.textContent = 'Message: ' + issue.body.body;
+    comments.textContent = 'Comments: ' + issue.body.comments;
+    date.textContent = 'Created: ' + formatDate(new Date(issue.body.created_at));
+    img.src = issue.body.user.avatar_url;
+    issueLink.setAttribute('href', issue.body.html_url);
 
     // Add to DOM
 
@@ -127,10 +131,14 @@ function issueNotification(issue) {
 
     // Get info from socket
 
-    author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
-    img.src = issue.sender.avatar_url;
+    author.textContent = issue.body.sender.login + ' ' + issue.body.action + ' an issue!';
+    img.src = issue.body.sender.avatar_url;
 
-    if (issue.action === 'opened' || issue.action === 'reopened') {
+    if (issue.headers.x-github-event === 'issue_comment') {
+        author.textContent = issue.body.sender.login + ' commented an issue!';
+    }
+
+    else if (issue.body.action === 'opened' || issue.body.action === 'reopened') {
         author.style.color = '#FF0208';
     }
 
