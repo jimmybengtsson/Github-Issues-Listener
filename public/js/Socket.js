@@ -193,7 +193,7 @@ function commentFromHook(issue) {
         console.log(i);
 
 
-        if (i.querySelector('.issueID').textContent === issue.id) {
+        if (i.getElementsByClassName('.issueID').textContent === issue.id) {
             let comment = document.createElement('p');
             let text = document.createTextNode('New Comment');
             comment.appendChild(text);
