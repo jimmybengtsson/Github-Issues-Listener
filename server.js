@@ -48,7 +48,9 @@ let io = require('socket.io')(server);
 
 app.post('/', githubMiddleware, function(req, res) {
 
-    console.log(req.header);
+    let headers = req.getAllResponseHeaders().toLowerCase();
+
+    console.log(headers);
 
     payload = req.body;
     console.log(payload);
