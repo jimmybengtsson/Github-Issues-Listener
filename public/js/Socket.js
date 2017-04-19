@@ -184,13 +184,13 @@ function commentFromHook(issue) {
 
     let ulList = document.querySelector('.ulClass');
 
-    let children = ulList.children;
+    let childrens = ulList.children;
 
     console.log(ulList);
 
-    console.log(children[1]);
+    console.log(childrens[0]);
 
-    for (let i = 0; i < children.length; i++) {
+    for (let i = 0; i < childrens.length; i++) {
 
         console.log(i.querySelector('.issueID'));
 
