@@ -190,16 +190,16 @@ function commentFromHook(issue) {
 
     for (let i = 0; i < children.length; i++) {
 
-        console.log(i);
+        for (let j = 0; j < i.length; j++) {
 
+            if (j.textContent === issue.id) {
+                let comment = document.createElement('p');
+                let text = document.createTextNode('New Comment');
+                comment.appendChild(text);
 
-        if (i.getElementsByClassName('.issueID').textContent === issue.id) {
-            let comment = document.createElement('p');
-            let text = document.createTextNode('New Comment');
-            comment.appendChild(text);
+                i.insertBefore(comment, i.childNodes[0]);
 
-            i.insertBefore(comment, i.childNodes[0]);
-
+            }
         }
     }
 }
