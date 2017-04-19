@@ -184,7 +184,7 @@ function commentFromHook(issue) {
 
     let ulList = document.querySelector('.ulClass');
 
-    let children = ulList.childNodes;
+    let children = ulList.children;
 
     console.log(children);
 
