@@ -204,7 +204,7 @@ function commentFromHook(issue) {
                 }
 
                 let comment = document.createElement('a');
-                comment.setAttribute('href', issue.comment.url);
+                comment.setAttribute('href', issue.comment.html_url);
                 comment.textContent = 'New Comment';
                 comment.className = 'newComment';
 
