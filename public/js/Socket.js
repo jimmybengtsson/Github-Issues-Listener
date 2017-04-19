@@ -188,10 +188,12 @@ function commentFromHook(issue) {
 
     for (let i = 0; i < children.length; i++) {
 
-        i.forEach((j) => {
+        let childrenAlt = i.children;
+
+        for (let j = 0; j < childrenAlt.length; j++) {
 
             console.log(j.innerHTML);
-            console.log(j.innerText);
+            console.log(j);
 
             if (j.innerText === issue.id) {
 
@@ -202,7 +204,7 @@ function commentFromHook(issue) {
                 i.insertBefore(comment, i.childNodes[0]);
 
             }
-        });
+        }
     }
 }
 
