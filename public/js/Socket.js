@@ -184,15 +184,19 @@ function commentFromHook(issue) {
 
     let ulList = document.querySelector('.ulClass');
 
-    for (let i = 0; i < ulList.length; i++) {
+    let childrens = ulList.children;
 
-        let temp = ulList[i].children;
+    for (let i = 0; i < childrens.length; i++) {
+
+        let temp = childrens[i].children;
+
+        console.log(temp);
 
         for (let j = 0; j < temp.length; j++) {
 
             if (temp[j].textContent === ('ID: ' + issue.issue.id)) {
 
-                console.log(temp);
+                console.log(temp[j]);
 
                 let commentsTemp = temp.querySelector('.issueComments');
                 commentsTemp.textContent = 'Comments: ' + issue.issue.comments;
@@ -202,7 +206,7 @@ function commentFromHook(issue) {
                 comment.textContent = 'New Comment';
                 comment.className = 'newComment';
 
-                return ulList[i].insertBefore(comment, ulList[i].childNodes[0]);
+                return childrens[i].insertBefore(comment, childrens[i].childNodes[0]);
 
             }
         }
