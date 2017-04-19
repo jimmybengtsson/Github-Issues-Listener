@@ -194,13 +194,11 @@ function commentFromHook(issue) {
 
             if (temp[j].textContent === ('ID: ' + issue.issue.id)) {
 
-                console.log(temp[j]);
-
                 let comment = document.createElement('p');
                 let text = document.createTextNode('New Comment');
                 comment.appendChild(text);
 
-                childrens[i].insertBefore(comment, childrens[i].childNodes[0]);
+                return childrens[i].insertBefore(comment, childrens[i].childNodes[0]);
 
             }
         }
