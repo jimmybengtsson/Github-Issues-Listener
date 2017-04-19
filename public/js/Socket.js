@@ -94,14 +94,14 @@ function getIssues(issue) {
 
     // Get info from the socket
 
-    author.textContent = 'Created by: ' + issue.body.user.login;
+    author.textContent = 'Created by: ' + issue.user.login;
     issueDiv.className = 'issueDivAlt';
-    title.textContent = 'Title: ' + issue.body.title;
-    text.textContent = 'Message: ' + issue.body.body;
-    comments.textContent = 'Comments: ' + issue.body.comments;
-    date.textContent = 'Created: ' + formatDate(new Date(issue.body.created_at));
-    img.src = issue.body.user.avatar_url;
-    issueLink.setAttribute('href', issue.body.html_url);
+    title.textContent = 'Title: ' + issue.title;
+    text.textContent = 'Message: ' + issue.body;
+    comments.textContent = 'Comments: ' + issue.comments;
+    date.textContent = 'Created: ' + formatDate(new Date(issue.created_at));
+    img.src = issue.user.avatar_url;
+    issueLink.setAttribute('href', issue.html_url);
 
     // Add to DOM
 
