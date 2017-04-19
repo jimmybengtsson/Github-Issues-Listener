@@ -190,9 +190,8 @@ function commentFromHook(issue) {
 
         for (let j = 0; j < i.length; j++) {
 
-            if (j.textContent === issue.id) {
+            if (j.innerHTML === issue.id) {
 
-                console.log(j.textContent);
                 let comment = document.createElement('p');
                 let text = document.createTextNode('New Comment');
                 comment.appendChild(text);
