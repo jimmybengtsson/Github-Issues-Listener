@@ -186,13 +186,13 @@ function commentFromHook(issue) {
 
     let children = ulList.children;
 
-    console.log(children);
-
     for (let i = 0; i < children.length; i++) {
 
         for (let j = 0; j < i.length; j++) {
 
             if (j.textContent === issue.id) {
+
+                console.log(j.textContent);
                 let comment = document.createElement('p');
                 let text = document.createTextNode('New Comment');
                 comment.appendChild(text);
