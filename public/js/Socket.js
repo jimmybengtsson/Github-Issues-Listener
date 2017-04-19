@@ -184,21 +184,11 @@ function commentFromHook(issue) {
 
     let ulList = document.querySelector('.ulClass');
 
-    let children = ulList.children;
+    for (let i = 0; i < ulList.length; i++) {
 
-    console.log(ulList);
+        console.log(i);
 
-    console.log(children);
-
-    for (let i = 0; i < children.length; i++) {
-
-        console.log(i.children);
-
-        let childrenAlt = i.children;
-
-        console.log(childrenAlt);
-
-        for (let j = 0; j < childrenAlt.length; j++) {
+        for (let j = 0; j < i.length; j++) {
 
             console.log(j.innerHTML);
             console.log(j);
