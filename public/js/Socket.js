@@ -194,9 +194,9 @@ function commentFromHook(issue) {
 
             if (temp[j].textContent === ('ID: ' + issue.issue.id)) {
 
-                console.log(temp[j]);
+                console.log(temp);
 
-                let commentsTemp = temp[j].querySelector('.issueComments');
+                let commentsTemp = temp.querySelector('.issueComments');
                 commentsTemp.textContent = 'Comments: ' + issue.issue.comments;
 
                 let comment = document.createElement('a');
