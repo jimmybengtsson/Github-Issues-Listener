@@ -192,9 +192,9 @@ function commentFromHook(issue) {
 
     for (let i = 0; i < children.length; i++) {
 
-        console.log(i.children);
+        console.log(i.querySelector('.issueID'));
 
-        let childrenAlt = i.children;
+        /*let childrenAlt = i.children;
 
         console.log(childrenAlt);
 
@@ -212,7 +212,7 @@ function commentFromHook(issue) {
                 i.insertBefore(comment, i.childNodes[0]);
 
             }
-        }
+        }*/
     }
 }
 
