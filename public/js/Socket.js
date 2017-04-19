@@ -25,7 +25,7 @@ socket.on('newIssue', function(data) {
 
 socket.on('newComment', function(data) {
 
-    issueNotification(data);
+    commentNotification(data);
     commentFromHook(data);
 });
 
