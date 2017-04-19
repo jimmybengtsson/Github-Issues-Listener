@@ -190,7 +190,7 @@ function commentFromHook(issue) {
 
         let temp = childrens[i].children;
 
-        console.log(temp.p.issueComments);
+        console.log(temp.issueComments);
 
         for (let j = 0; j < temp.length; j++) {
 
