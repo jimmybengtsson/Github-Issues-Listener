@@ -144,10 +144,6 @@ function issueNotification(issue) {
     author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
     img.src = issue.sender.avatar_url;
 
-    if (issue.action === 'opened' || issue.action === 'reopened') {
-        author.style.color = '#FF0208';
-    }
-
     // Add to DOM....
 
     notiDiv.appendChild(img);
@@ -180,6 +176,8 @@ function formatDate(date) {
     return day + ' ' + monthNames[monthIndex] + ' ' + year;
 }
 
+// Add link when new comment.
+
 function commentFromHook(issue) {
 
     let ulList = document.querySelector('.ulClass');
@@ -190,18 +188,9 @@ function commentFromHook(issue) {
 
         let temp = childrens[i].children;
 
-        console.log(temp.issueComments);
-
         for (let j = 0; j < temp.length; j++) {
 
             if (temp[j].textContent === ('ID: ' + issue.issue.id)) {
-
-                for (let k = 0; k < temp.length; k++) {
-
-                    if (temp[k].className === 'issueComments') {
-                        temp[k].textContent = 'Comments: ' + issue.comments;
-                    }
-                }
 
                 let comment = document.createElement('a');
                 comment.setAttribute('href', issue.comment.html_url);
@@ -213,5 +202,36 @@ function commentFromHook(issue) {
             }
         }
     }
+}
+
+// Notification when a issue is commented.
+
+function commentNotification(issue) {
+
+    let template = document.querySelector('.notification');
+    let clone = document.importNode(template.content, true);
+    let dropZone = document.querySelector('.dropzone');
+    let notiDiv = clone.querySelector('.issueNotification');
+    let author = clone.querySelector('.issueAuthor');
+    let img = clone.querySelector('.issueImg');
+
+    // Get info from socket
+
+    author.textContent = issue.sender.login + ' commented an issue!';
+    img.src = issue.sender.avatar_url;
+
+    // Add to DOM....
+
+    notiDiv.appendChild(img);
+    notiDiv.appendChild(author);
+
+    dropZone.appendChild(notiDiv);
+
+    // ....for 5 seconds!
+
+    setTimeout(function(){
+        dropZone.removeChild(notiDiv);
+    }, 5000);
+
 }
 
