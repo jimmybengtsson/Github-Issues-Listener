@@ -9,16 +9,22 @@ require('dotenv').config();
 
 let payload;
 
+// Middleware to open a webhook with issues.
+
 let githubMiddleware = require('github-webhook-middleware')({
     secret: process.env.GITHUB_SECRET,
 });
 
-// Start express and which port.
+// Start express and port.
 
 let app = express();
 let port = process.env.PORT || 3000;
 
+// Client start
+
 app.use(express.static(__dirname + '/public'));
+
+// Add bodyparser.
 
 app.use(bodyParser.json());
 
@@ -38,6 +44,8 @@ let server = https.createServer({
 
 let io = require('socket.io')(server);
 
+// Emit to socket when webhook from github.
+
 app.post('/', githubMiddleware, function(req, res) {
 
     payload = req.body;
@@ -45,6 +53,8 @@ app.post('/', githubMiddleware, function(req, res) {
     io.emit('newIssue', payload);
     return res.status(202).send();
 });
+
+// Get all issues from github when client connects.
 
 io.on('connection', function(socket) {
 
