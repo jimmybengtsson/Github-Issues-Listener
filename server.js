@@ -48,6 +48,8 @@ let io = require('socket.io')(server);
 
 app.post('/', githubMiddleware, function(req, res) {
 
+    console.log(req.header);
+
     payload = req.body;
     console.log(payload);
     io.emit('newIssue', payload);

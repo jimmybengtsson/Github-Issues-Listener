@@ -94,8 +94,8 @@ function getIssues(issue) {
     issueDiv.className = 'issueDivAlt';
     title.textContent = 'Title: ' + issue.title;
     text.textContent = 'Message: ' + issue.body;
-    comments.textContent = 'Comments: ' + issue.comments;
-    date.textContent = 'Created: ' + formatDate(new Date(issue.created_at));
+    comments.textContent = 'Comments: ' + issue.issue.comments;
+    date.textContent = 'Created: ' + formatDate(new Date(issue.issue.created_at));
     img.src = issue.user.avatar_url;
     issueLink.setAttribute('href', issue.html_url);
 
