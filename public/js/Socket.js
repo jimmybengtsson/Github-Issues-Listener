@@ -188,14 +188,16 @@ function commentFromHook(issue) {
 
     for (let i = 0; i < childrens.length; i++) {
 
-        console.log(childrens[i].children);
+        let temp = childrens[i].children;
 
-        for (let j = 0; j < childrens[i].length; j++) {
+        for (let j = 0; j < temp.length; j++) {
 
-            console.log(j.innerHTML);
-            console.log(j);
+            console.log(temp[j]);
+            console.log(temp[j].textContent);
 
-            if (j.innerText === issue.id) {
+            if (temp[j].textContent === issue.id) {
+
+                console.log(temp[j]);
 
                 let comment = document.createElement('p');
                 let text = document.createTextNode('New Comment');
