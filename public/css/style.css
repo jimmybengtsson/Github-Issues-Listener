@@ -291,7 +291,7 @@ body {
     border: 1px #000000;
     float: right;
     right: 0;
-    bottom: 0;
+    bottom: 20px;
 }
 
 .issueNotification {
