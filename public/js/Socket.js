@@ -188,17 +188,11 @@ function commentFromHook(issue) {
 
     console.log(ulList);
 
-    console.log(childrens[0]);
-
     for (let i = 0; i < childrens.length; i++) {
 
         console.log(childrens[i]);
 
-        /*let childrenAlt = i.children;
-
-        console.log(childrenAlt);
-
-        for (let j = 0; j < childrenAlt.length; j++) {
+        for (let j = 0; j < childrens[i].length; j++) {
 
             console.log(j.innerHTML);
             console.log(j);
@@ -212,7 +206,7 @@ function commentFromHook(issue) {
                 i.insertBefore(comment, i.childNodes[0]);
 
             }
-        }*/
+        }
     }
 }
 
