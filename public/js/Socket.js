@@ -36,6 +36,8 @@ function issueFromHook(issue) {
     let author = clone.querySelector('.issueAuthor');
     let title = clone.querySelector('.issueTitle');
     let text = clone.querySelector('.issueText');
+    let date = clone.querySelector('.issueDate');
+    let comments = clone.querySelector('.issueComments');
     let img = clone.querySelector('.issueImg');
     let issueLink = clone.querySelector('.issueLink');
 
@@ -44,6 +46,8 @@ function issueFromHook(issue) {
     author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
     title.textContent = 'Title: ' + issue.issue.title;
     text.textContent = 'Message: ' + issue.issue.body;
+    comments.textContent = 'Comments: ' + issue.comments;
+    date.textContent = 'Created: ' + formatDate(new Date(issue.created_at));
     img.src = issue.sender.avatar_url;
     issueLink.setAttribute('href', issue.issue.html_url);
 
@@ -59,6 +63,8 @@ function issueFromHook(issue) {
     issueLi.appendChild(issueDiv);
     issueLi.appendChild(title);
     issueLi.appendChild(text);
+    issueLi.appendChild(comments);
+    issueLi.appendChild(date);
     issueLi.appendChild(issueLink);
 
     ulList.insertBefore(issueLi, ulList.childNodes[0]);
@@ -77,6 +83,8 @@ function getIssues(issue) {
     let author = clone.querySelector('.issueAuthor');
     let title = clone.querySelector('.issueTitle');
     let text = clone.querySelector('.issueText');
+    let date = clone.querySelector('.issueDate');
+    let comments = clone.querySelector('.issueComments');
     let img = clone.querySelector('.issueImg');
     let issueLink = clone.querySelector('.issueLink');
 
@@ -86,6 +94,8 @@ function getIssues(issue) {
     issueDiv.className = 'issueDivAlt';
     title.textContent = 'Title: ' + issue.title;
     text.textContent = 'Message: ' + issue.body;
+    comments.textContent = 'Comments: ' + issue.comments;
+    date.textContent = 'Created: ' + formatDate(new Date(issue.created_at));
     img.src = issue.user.avatar_url;
     issueLink.setAttribute('href', issue.html_url);
 
@@ -97,6 +107,8 @@ function getIssues(issue) {
     issueLi.appendChild(issueDiv);
     issueLi.appendChild(title);
     issueLi.appendChild(text);
+    issueLi.appendChild(comments);
+    issueLi.appendChild(date);
     issueLi.appendChild(issueLink);
 
     ulList.appendChild(issueLi);
@@ -135,5 +147,22 @@ function issueNotification(issue) {
         dropZone.removeChild(notiDiv);
     }, 5000);
 
+}
+
+// Format date
+
+function formatDate(date) {
+    let monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ];
+
+    let day = date.getDate();
+    let monthIndex = date.getMonth();
+    let year = date.getFullYear();
+
+    return day + ' ' + monthNames[monthIndex] + ' ' + year;
 }
 
