@@ -48,8 +48,16 @@ let io = require('socket.io')(server);
 
 app.post('/', githubMiddleware, function(req, res) {
 
-    io.emit('newIssue', req);
-    return res.status(202).send();
+
+    payload = req.body;
+
+    if (req.headers.X-GitHub-Event === 'issue_comment') {
+        io.emit('newComment', payload);
+        return res.status(202).send();
+    } else {
+        io.emit('newIssue', payload);
+        return res.status(202).send();
+    }
 });
 
 // Get all issues from github when client connects.

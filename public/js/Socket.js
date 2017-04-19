@@ -23,6 +23,14 @@ socket.on('newIssue', function(data) {
     issueFromHook(data);
 });
 
+socket.on('newComment', function(data) {
+
+    issueNotification(data);
+    commentFromHook(data);
+});
+
+
+
 // Function to list all the open issues from repo
 
 function issueFromHook(issue) {
@@ -38,24 +46,22 @@ function issueFromHook(issue) {
     let text = clone.querySelector('.issueText');
     let date = clone.querySelector('.issueDate');
     let comments = clone.querySelector('.issueComments');
+    let id = clone.querySelector('.issueID');
     let img = clone.querySelector('.issueImg');
     let issueLink = clone.querySelector('.issueLink');
 
     // Get info from the sockets response
 
-    author.textContent = issue.body.sender.login + ' ' + issue.body.action + ' an issue!';
-    title.textContent = 'Title: ' + issue.body.issue.title;
-    text.textContent = 'Message: ' + issue.body.issue.body;
-    comments.textContent = 'Comments: ' + issue.body.issue.comments;
-    date.textContent = 'Created: ' + formatDate(new Date(issue.body.issue.created_at));
-    img.src = issue.body.sender.avatar_url;
-    issueLink.setAttribute('href', issue.body.issue.html_url);
+    author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
+    title.textContent = 'Title: ' + issue.issue.title;
+    text.textContent = 'Message: ' + issue.issue.body;
+    comments.textContent = 'Comments: ' + issue.issue.comments;
+    date.textContent = 'Created: ' + formatDate(new Date(issue.issue.created_at));
+    id.textContent = 'ID: ' + issue.issue.id;
+    img.src = issue.sender.avatar_url;
+    issueLink.setAttribute('href', issue.issue.html_url);
 
-    if (issue.headers.x-github-event === 'issue_comment') {
-        author.textContent = issue.body.sender.login + ' commented an issue!';
-    }
-
-    else if (issue.body.action === 'opened' || issue.body.action === 'reopened') {
+    if (issue.action === 'opened' || issue.action === 'reopened') {
         issueDiv.className = 'issueDivAlt';
     }
 
@@ -69,6 +75,7 @@ function issueFromHook(issue) {
     issueLi.appendChild(text);
     issueLi.appendChild(comments);
     issueLi.appendChild(date);
+    issueLi.appendChild(id);
     issueLi.appendChild(issueLink);
 
     ulList.insertBefore(issueLi, ulList.childNodes[0]);
@@ -89,6 +96,7 @@ function getIssues(issue) {
     let text = clone.querySelector('.issueText');
     let date = clone.querySelector('.issueDate');
     let comments = clone.querySelector('.issueComments');
+    let id = clone.querySelector('.issueID');
     let img = clone.querySelector('.issueImg');
     let issueLink = clone.querySelector('.issueLink');
 
@@ -100,6 +108,7 @@ function getIssues(issue) {
     text.textContent = 'Message: ' + issue.body;
     comments.textContent = 'Comments: ' + issue.comments;
     date.textContent = 'Created: ' + formatDate(new Date(issue.created_at));
+    id.textContent = 'ID: ' + issue.id;
     img.src = issue.user.avatar_url;
     issueLink.setAttribute('href', issue.html_url);
 
@@ -113,6 +122,7 @@ function getIssues(issue) {
     issueLi.appendChild(text);
     issueLi.appendChild(comments);
     issueLi.appendChild(date);
+    issueLi.appendChild(id);
     issueLi.appendChild(issueLink);
 
     ulList.appendChild(issueLi);
@@ -131,14 +141,10 @@ function issueNotification(issue) {
 
     // Get info from socket
 
-    author.textContent = issue.body.sender.login + ' ' + issue.body.action + ' an issue!';
-    img.src = issue.body.sender.avatar_url;
+    author.textContent = issue.sender.login + ' ' + issue.action + ' an issue!';
+    img.src = issue.sender.avatar_url;
 
-    if (issue.headers.x-github-event === 'issue_comment') {
-        author.textContent = issue.body.sender.login + ' commented an issue!';
-    }
-
-    else if (issue.body.action === 'opened' || issue.body.action === 'reopened') {
+    if (issue.action === 'opened' || issue.action === 'reopened') {
         author.style.color = '#FF0208';
     }
 
@@ -172,5 +178,25 @@ function formatDate(date) {
     let year = date.getFullYear();
 
     return day + ' ' + monthNames[monthIndex] + ' ' + year;
+}
+
+function commentFromHook(issue) {
+
+    let ulList = document.querySelector('.ulClass');
+
+    let children = ulList.childNodes;
+
+    for (let i = 0; i < children.length; i++) {
+
+
+        if (i.querySelector('.issueID').textContent === issue.id) {
+            let comment = document.createElement('p');
+            let text = document.createTextNode('New Comment');
+            comment.appendChild(text);
+
+            i.insertBefore(comment, i.childNodes[0]);
+
+        }
+    }
 }
 
