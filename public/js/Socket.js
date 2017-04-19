@@ -49,7 +49,7 @@ function issueFromHook(issue) {
     issueLink.setAttribute('href', issue.issue.html_url);
 
     if (issue.action === 'opened' || issue.action === 'reopened') {
-        author.style.color = '#FF0208';
+        issueDiv.className = 'issueDivAlt';
     }
 
     // Add to DOM
